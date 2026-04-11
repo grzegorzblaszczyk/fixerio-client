@@ -38,3 +38,8 @@ jobs:
 
     - name: Run RSpec tests
       run: bundle exec rspec spec
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4
+      with:
+        file: ./coverage/coverage.xml
