@@ -25,6 +25,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bigdecimal", ">=4.1.1"
   spec.add_development_dependency "bundler", ">=4.0.10"
+  spec.add_development_dependency "irb", "~> 1.17.0"
   spec.add_development_dependency "ostruct", "~> 0.6.3"
   spec.add_development_dependency "pry", "~> 0.16.0"
   spec.add_development_dependency "rake", "~> 13.3"
