@@ -49,4 +49,53 @@ http_interactions:
       string: '{"success":true,"timestamp":1775938624,"base":"EUR","date":"2026-04-11","rates":{"PLN":4.254117,"USD":1.17274,"GBP":0.871601}}'
     http_version:
   recorded_at: Sat, 11 Apr 2026 20:19:00 GMT
+- request:
+    method: get
+    uri: http://data.fixer.io/api/2018-10-01?access_key=invalid_key&symbols=PLN,USD,GBP
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - data.fixer.io
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sat, 11 Apr 2026 20:19:00 GMT
+      Content-Type:
+      - application/json; Charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      X-Rate-Limit:
+      - '1'
+      X-Rate-Limit-Remaining:
+      - '0'
+      X-Rate-Limit-Reset:
+      - '1775938741'
+      X-Apilayer-Transaction-Id:
+      - 7ac1859a-2cd0-45e7-b5a1-a28b1ecb6017
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS
+      Last-Modified:
+      - Sat, 11 Apr 2026 20:17:04 GMT
+      Etag:
+      - d4deb3d93eb571a3e635f1de6d6e2f81
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Request-Time:
+      - '0.022'
+    body:
+      encoding: UTF-8
+      string: '{"success":true,"timestamp":1538438399,"historical":true,"base":"EUR","date":"2018-10-01","rates":{"PLN":4.286384,"USD":1.157716,"GBP":0.887609}}'
+    http_version:
+  recorded_at: Sat, 11 Apr 2026 20:19:00 GMT
 recorded_with: VCR 4.0.0

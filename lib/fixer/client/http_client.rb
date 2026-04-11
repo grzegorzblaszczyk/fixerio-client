@@ -25,28 +25,32 @@ module Fixer
 
   	  def fetch(symbols = [], date = nil)
         raise ::ArgumentError.new("You cannot put date argument for 'latest' mode client") if @scope == :latest && !date.nil? && !date.empty?
-        response_hash = hash(symbols)
+        raise ::ArgumentError.new("You cannot query for historical data without a date argument") if @scope == :historical && (date.nil? || date.strip == "")
+        raise ::ArgumentError.new("You cannot query for historical data with invalid date argument") if @scope == :historical && (Date.strptime(date,"%Y-%m-%d").to_s != date)
+        response_hash = hash(symbols, date)
         raise Fixer::Client::Errors::InvalidResponse.new("Response: #{response_hash}") if response_hash["success"].to_s != "true"
         response_hash
   	  end
 
       private 
 
-        def hash(symbols)
-          ::JSON.parse(json(symbols))
+        def hash(symbols, date)
+          ::JSON.parse(json(symbols, date))
         end
 
-        def json(symbols)
-          Net::HTTP.get(url(symbols))
+        def json(symbols, date)
+          json = Net::HTTP.get(url(symbols, date))
+          puts "#{json}"
+          json
         end
 
-        def url(symbols)
+        def url(symbols, date)
           symbols_arg = symbols.join(",")
           case @scope
           when :latest
             URI("#{BASE_URI}/latest?access_key=#{@api_key}&symbols=#{symbols_arg}")
           when :historical
-            raise ::ArgumentError.new("Not implemented yet!")
+            URI("#{BASE_URI}/#{date}?access_key=#{@api_key}&symbols=#{symbols_arg}")
           end
         end
 

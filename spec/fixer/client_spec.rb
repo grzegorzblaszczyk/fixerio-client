@@ -36,11 +36,47 @@ RSpec.describe Fixer::Client do
   end
 
   describe "#historical" do
-    it "fails to get historical Fixer.io rates for PLN, USD, GBP for base EUR currecy - not yet implemented" do
+    it "gets the historical Fixer.io rates for PLN, USD, GBP for base EUR currecy" do
+      fixer_client = Fixer::Client.historical
+      result = fixer_client.fetch(["PLN", "USD", "GBP"], "2018-10-01")
+      expect(result["success"]).to eql true
+      expect(result["timestamp"]).to be > 0
+      expect(result["rates"]).not_to eql nil
+      expect(result["rates"]["PLN"]).to be > 1
+      expect(result["rates"]["PLN"]).to be < 10
+      expect(result["rates"]["USD"]).to be > 0
+      expect(result["rates"]["USD"]).to be < 10
+      expect(result["rates"]["GBP"]).to be > 0
+      expect(result["rates"]["GBP"]).to be < 10
+    end
+
+    it "fails to fetch the historical Fixer.io rates for PLN, USD, GBP for base EUR currecy when the date is not provided" do
       fixer_client = Fixer::Client.historical
       expect {
-        fixer_client.fetch(["PLN", "USD", "GBP"])
+        fixer_client.fetch(["PLN", "USD", "GBP"], nil)
       }.to raise_error(ArgumentError)
+
+      expect {
+        fixer_client.fetch(["PLN", "USD", "GBP"], "")
+      }.to raise_error(ArgumentError)
+
+      expect {
+        fixer_client.fetch(["PLN", "USD", "GBP"], " ")
+      }.to raise_error(ArgumentError)
+
+    end
+
+
+    it "fails to fetch the historical Fixer.io rates for PLN, USD, GBP for base EUR currecy when the date is in invalid format" do
+      fixer_client = Fixer::Client.historical
+      expect {
+        fixer_client.fetch(["PLN", "USD", "GBP"], "20181001")
+      }.to raise_error(ArgumentError)
+
+      expect {
+        fixer_client.fetch(["PLN", "USD", "GBP"], "2018-10-01T21:00:01.000+00:00")
+      }.to raise_error(ArgumentError)
+
     end
   end
 
