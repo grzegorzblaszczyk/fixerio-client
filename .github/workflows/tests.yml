@@ -39,7 +39,11 @@ jobs:
     - name: Run RSpec tests
       run: bundle exec rspec spec
 
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v4
-      with:
-        file: ./coverage/coverage.xml
+    - name: Add Coverage Summary
+      if: always()
+      run: |
+        echo "### Test Coverage Report" >> $GITHUB_STEP_SUMMARY
+        # Wyciąga procent z pliku tekstowego wygenerowanego przez SimpleCov
+        COVERAGE=$(grep -oP '(?<=Line Coverage: )\d+\.\d+' coverage/coverage.xml || echo "0.0")
+        echo "Total coverage: **$COVERAGE%**" >> $GITHUB_STEP_SUMMARY
+

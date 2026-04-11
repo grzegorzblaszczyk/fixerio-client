@@ -2,6 +2,7 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/beca7c860bad3aaed7ef/maintainability)](https://codeclimate.com/github/grzegorzblaszczyk/fixerio-client/maintainability)
 [![codecov](https://codecov.io/gh/grzegorzblaszczyk/fixerio-client/branch/main/graph/badge.svg)](https://codecov.io/gh/grzegorzblaszczyk/fixerio-client)
+![Ruby Tests](https://github.com/grzegorzblaszczyk/fixerio-client/actions/workflows/tests.yml/badge.svg)
 
 Get latest or historic currency rates for base EUR from api.fixer.io
 

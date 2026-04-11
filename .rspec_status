@@ -1,9 +1,9 @@
 example_id                                                 | status | run_time        |
 ---------------------------------------------------------- | ------ | --------------- |
-./spec/fixer/client/errors/invalid_response_spec.rb[1:1:1] | passed | 0.00062 seconds |
-./spec/fixer/client/http_client_spec.rb[1:1:1]             | passed | 0.00012 seconds |
+./spec/fixer/client/errors/invalid_response_spec.rb[1:1:1] | passed | 0.00058 seconds |
+./spec/fixer/client/http_client_spec.rb[1:1:1]             | passed | 0.00011 seconds |
 ./spec/fixer/client/http_client_spec.rb[1:1:2]             | passed | 0.0001 seconds  |
 ./spec/fixer/client/http_client_spec.rb[1:2:1]             | passed | 0.0001 seconds  |
-./spec/fixer/client_spec.rb[1:1:1]                         | passed | 0.01931 seconds |
-./spec/fixer/client_spec.rb[1:1:2]                         | passed | 0.00105 seconds |
-./spec/fixer/client_spec.rb[1:2:1]                         | passed | 0.00017 seconds |
+./spec/fixer/client_spec.rb[1:1:1]                         | passed | 0.0276 seconds  |
+./spec/fixer/client_spec.rb[1:1:2]                         | passed | 0.00126 seconds |
+./spec/fixer/client_spec.rb[1:2:1]                         | passed | 0.00018 seconds |
