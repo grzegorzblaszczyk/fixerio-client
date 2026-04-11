@@ -23,13 +23,15 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["config", "lib"]
 
-  spec.add_development_dependency "bundler", ">= 2.2.10"
-  spec.add_development_dependency "pry", "~> 0.11.0"
-  spec.add_development_dependency "rake", "~> 13.0"
-  spec.add_development_dependency "rspec", "~> 3.0"
-  spec.add_development_dependency "rubocop", "~> 0.59.0"
-  spec.add_development_dependency "simplecov-console", "~> 0.4.0"
-  spec.add_development_dependency "simplecov-cobertura", "~> 1.3.0"
-  spec.add_development_dependency "vcr", "~> 4.0.0"
-  spec.add_development_dependency "webmock", "~> 3.6.2"
+  spec.add_development_dependency "bigdecimal", ">=4.1.1"
+  spec.add_development_dependency "bundler", ">=4.0.10"
+  spec.add_development_dependency "ostruct", "~> 0.6.3"
+  spec.add_development_dependency "pry", "~> 0.16.0"
+  spec.add_development_dependency "rake", "~> 13.3"
+  spec.add_development_dependency "rspec", "~> 3.13"
+  spec.add_development_dependency "rubocop", "~> 1.86.1"
+  spec.add_development_dependency "simplecov-console", "~> 0.9.5"
+  spec.add_development_dependency "simplecov-cobertura", "~> 3.1.0"
+  spec.add_development_dependency "vcr", "~> 6.4"
+  spec.add_development_dependency "webmock", "~> 3.26"
 end

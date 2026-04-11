@@ -16,6 +16,9 @@ unless ENV["VCR_OFF"] == "1"
   end
 else
   WebMock.allow_net_connect!
+  VCR.configure do |c|
+    c.configure_rspec_metadata!
+  end
 end
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
