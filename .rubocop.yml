@@ -1,0 +1,10 @@
+FrozenStringLiteralComment: 
+  Enabled: false
+StringLiterals: 
+  Enabled: false
+SymbolProc:
+  Enabled: false
+plugins: 
+  - rubocop-rake
+  - rubocop-rspec
+

@@ -10,20 +10,20 @@ module Fixer
 
       BASE_URI = "http://data.fixer.io/api".freeze
       SCOPES = [
-    	  :latest,
+        :latest,
         :historical
-  	  ].freeze
+      ].freeze
 
       CONFIG_FILE = "config/fixerio_client.yml".freeze
-    	
-  	  def initialize(scope = :latest)
+
+      def initialize(scope = :latest)
         raise ::ArgumentError.new unless SCOPES.include?(scope)
         @scope = scope
         @config = read_config
         @api_key = get_api_key
-  	  end 
+      end
 
-  	  def fetch(symbols = [], date = nil)
+      def fetch(symbols = [], date = nil)
         raise ::ArgumentError.new("You cannot put date argument for 'latest' mode client") if @scope == :latest && !date.nil? && !date.empty?
         raise ::ArgumentError.new("You cannot query for historical data without a date argument") if @scope == :historical && (date.nil? || date.strip == "")
         raise ::ArgumentError.new("You cannot query for historical data with invalid date argument") if @scope == :historical && (Date.strptime(date,"%Y-%m-%d").to_s != date)

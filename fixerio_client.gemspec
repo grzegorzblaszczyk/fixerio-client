@@ -31,6 +31,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 13.3"
   spec.add_development_dependency "rspec", "~> 3.13"
   spec.add_development_dependency "rubocop", "~> 1.86.1"
+  spec.add_development_dependency "rubocop-rake", "~> 0.7.1"
+  spec.add_development_dependency "rubocop-rspec", "~> 3.9.0"
   spec.add_development_dependency "simplecov-console", "~> 0.9.5"
   spec.add_development_dependency "simplecov-cobertura", "~> 3.1.0"
   spec.add_development_dependency "vcr", "~> 6.4"
