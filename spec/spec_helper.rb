@@ -1,31 +1,32 @@
 require "bundler/setup"
 require "pry"
-require 'vcr'
-require 'simplecov'
-require 'simplecov-cobertura'
-require 'simplecov-console'
-require 'webmock'
-require 'webmock/rspec'
-require './spec/helpers/read_config_helpers'
+require "vcr"
+require "simplecov"
+require "simplecov-cobertura"
+require "simplecov-console"
+require "webmock"
+require "webmock/rspec"
+require "./spec/helpers/read_config_helpers"
 
-
-unless ENV["VCR_OFF"] == "1"
-  VCR.configure do |c|
-    c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
-    c.hook_into :webmock
-  end
-else
+if ENV["VCR_OFF"] == "1"
   WebMock.allow_net_connect!
   VCR.configure do |c|
     c.configure_rspec_metadata!
   end
+else
+  VCR.configure do |c|
+    c.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
+    c.hook_into :webmock
+  end
 end
 
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
-  SimpleCov::Formatter::Console,
-  SimpleCov::Formatter::HTMLFormatter,
-  SimpleCov::Formatter::CoberturaFormatter
-])
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
+  [
+    SimpleCov::Formatter::Console,
+    SimpleCov::Formatter::HTMLFormatter,
+    SimpleCov::Formatter::CoberturaFormatter
+  ]
+)
 
 SimpleCov.start
 
